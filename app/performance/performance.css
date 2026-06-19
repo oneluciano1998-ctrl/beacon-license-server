@@ -1,0 +1,141 @@
+/* =====================================================
+   PERFORMANCE PAGE
+===================================================== */
+
+    .performance-hero {
+    padding: 120px 10% 80px;
+    text-align: center;
+}
+
+.performance-hero h1 {
+    font-size: 72px;
+    color: #00bfff;
+    text-shadow: 0 0 15px #00bfff;
+}
+
+.performance-hero p {
+    margin-top: 15px;
+    font-size: 20px;
+    opacity: .8;
+}
+
+.statistics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 80px 10%;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(0, 191, 255, .2);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.stat-box h2 {
+    font-size: 42px;
+    color: #00bfff;
+}
+
+.growth{
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.growth h2{
+    font-size: 42px;
+    color:#00bfff;
+    margin-bottom:40px;
+    text-shadow:0 0 15px #00bfff;
+}
+
+.growth-chart{
+    display:block;
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 0 30px rgba(0,191,255,.3);
+}
+.backtest {
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.backtest-image {
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 191, 255, .3);
+}
+
+.myfxbook{
+    padding:100px 10%;
+    text-align:center;
+}
+
+.myfxbook h2{
+    font-size:42px;
+    color:#00bfff;
+    margin-bottom:30px;
+    text-shadow:0 0 15px #00bfff;
+}
+
+.myfxbook-btn{
+    display:inline-block;
+
+    padding:16px 40px;
+
+    background:linear-gradient(
+        135deg,
+        #00bfff,
+        #0099ff
+    );
+
+    border-radius:12px;
+
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.myfxbook-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 20px rgba(0,191,255,.5);
+}
+
+
+.backtest{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.backtest h2{
+    font-size:42px;
+    color:#00bfff;
+    margin-bottom:40px;
+    text-shadow:0 0 15px #00bfff;
+}
+
+.backtest-image{
+    display:block;
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 0 30px rgba(0,191,255,.3);
+}
+

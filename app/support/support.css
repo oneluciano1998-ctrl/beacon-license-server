@@ -1,0 +1,95 @@
+/* =====================================================
+   SUPPORT PAGE
+===================================================== */
+
+.support-hero{
+    padding:120px 10%;
+    text-align:center;
+}
+
+.support-hero h1{
+    font-size:72px;
+    color:#00bfff;
+    text-shadow:0 0 15px #00bfff;
+}
+
+.support-hero p{
+    margin-top:15px;
+    font-size:20px;
+    opacity:.8;
+}
+
+.support-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    padding:80px 10%;
+}
+
+.support-card{
+    padding:35px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(0,191,255,.2);
+    border-radius:20px;
+    transition:.3s;
+}
+
+.support-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(0,191,255,.3);
+}
+
+.support-hours{
+    text-align:center;
+    padding:80px 10%;
+}
+
+.faq-section{
+    padding:80px 10%;
+}
+
+.faq-section h2{
+    text-align:center;
+    color:#00bfff;
+    margin-bottom:40px;
+}
+
+.faq-card{
+    padding:25px;
+    margin-bottom:20px;
+    background:rgba(255,255,255,.05);
+    border-radius:15px;
+}
+
+.contact-admin{
+    text-align:center;
+    padding:100px 10%;
+}
+
+.contact-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 35px;
+    background:#00bfff;
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+}
+
+    .contact-admin {
+        padding: 120px 10%;
+        text-align: center;
+    }
+    
+    .contact-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 18px 40px;
+        background: #00bfff;
+        border-radius: 12px;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 0 25px #00bfff;
+    }

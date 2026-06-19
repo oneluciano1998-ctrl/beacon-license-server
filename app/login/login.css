@@ -1,0 +1,483 @@
+/* =========================
+   LOGIN PAGE
+========================= */
+
+/* ==========================================
+   RESET & BASE STYLES
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Prompt', sans-serif;
+    background-color: #030712;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+/* จุดแสงนีออนฉากหลัง (Background Ambient Lights) */
+
+.bg-glow-top {
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: rgba(6, 182, 212, 0.08);
+    border-radius: 50%;
+    filter: blur(140px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bg-glow-bottom {
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: rgba(59, 130, 246, 0.08);
+    border-radius: 50%;
+    filter: blur(140px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* ==========================================
+   LOGIN CARD CONTAINER (จุดสำคัญที่แก้ไขความกว้าง)
+   ========================================== */
+
+.login-container{
+    width:100%;
+    max-width:650px;
+
+    background:rgba(10,20,40,.85);
+
+    border:1px solid rgba(0,191,255,.25);
+
+    border-radius:30px;
+
+    padding:50px;
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+    0 0 40px rgba(0,191,255,.15),
+    0 0 80px rgba(0,191,255,.08);
+}
+
+.login-container{
+    position:relative;
+}
+
+.login-container::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border-radius:30px;
+
+    border:1px solid rgba(0,191,255,.15);
+
+    pointer-events:none;
+}
+
+/* แถบสถานะ Server Online */
+
+.status-badge-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 500;
+    background: rgba(16, 185, 129, 0.06);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+    animation: statusPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes statusPulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .3;
+    }
+}
+
+
+/* โลโก้และหัวข้อข้อความ */
+
+.header-section {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.logo-box{
+    width:110px;
+    height:110px;
+
+    margin:auto;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:none;
+
+    border:none;
+
+    box-shadow:none;
+}
+
+.logo-box i {
+    color: #ffffff;
+    font-size: 54px;
+}
+
+.main-title{
+    margin-top:25px;
+
+    font-size:45px;
+    font-weight:750;
+
+    line-height:1.1;
+}
+
+.gradient-text{
+    color:#00bfff;
+
+    text-shadow:
+    0 0 20px #00bfff,
+    0 0 40px #00bfff;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #94a3b8;
+    margin-top: 8px;
+    font-weight: 300;
+}
+
+
+/* ==========================================
+   INPUTS & FORM ELEMENTS
+   ========================================== */
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+.form-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: #06b6d4;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.form-link:hover {
+    color: #22d3ee;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(3, 7, 18, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    transition: all 0.2s ease;
+}
+
+.input-wrapper:focus-within {
+    border-color: #06b6d4;
+    background: rgba(3, 7, 18, 0.8);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+
+.input-icon {
+    position: absolute;
+    left: 18px;
+    color: #475569;
+    font-size: 16px;
+}
+
+.form-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 16px 16px 16px 52px;
+    font-size: 14px;
+    color: #ffffff;
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: #475569;
+}
+
+
+/* ปุ่มดวงตาเปิด/ซ่อนรหัสผ่าน */
+
+.toggle-password-btn {
+    position: absolute;
+    right: 18px;
+    background: none;
+    border: none;
+    color: #475569;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.2s;
+    outline: none;
+}
+
+.toggle-password-btn:hover {
+    color: #94a3b8;
+}
+
+
+/* ตัวเลือกจำรหัสและไอคอนความปลอดภัย */
+
+.options-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.custom-checkbox {
+    width: 18px;
+    height: 18px;
+    background: rgba(3, 7, 18, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.hidden-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.hidden-checkbox:checked+.custom-checkbox {
+    background: #06b6d4;
+    border-color: #06b6d4;
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+}
+
+.custom-checkbox i {
+    font-size: 10px;
+    color: #ffffff;
+    display: none;
+}
+
+.hidden-checkbox:checked+.custom-checkbox i {
+    display: block;
+}
+
+.encryption-text {
+    font-size: 12px;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+/* ปุ่มกดยืนยัน (Submit Button) */
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #06b6d4, #2563eb);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.25);
+}
+
+.submit-btn:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 25px rgba(6, 182, 212, 0.4);
+    transform: translateY(-1px);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+
+/* ==========================================
+   FOOTER SECTION
+   ========================================== */
+
+.footer-divider {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.footer-text a {
+    color: #06b6d4;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 4px;
+    transition: color 0.2s;
+}
+
+.footer-text a:hover {
+    color: #22d3ee;
+    text-decoration: underline;
+}
+
+
+/* เครดิตแบรนด์ PNC TH ด้านล่างสุด */
+
+.dev-brand-footer {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    pointer-events: none;
+    z-index: 10;
+    width: 100%;
+}
+
+.brand-text {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #334155;
+    font-weight: 500;
+}
+
+
+/* จัดระเบียบและเพิ่มระยะห่างแถบความปลอดภัยใต้ปุ่มกด */
+
+.security-note-row {
+    display: flex;
+    justify-content: center;
+    /* จัดให้อยู่กึ่งกลางหน้าจอเป๊ะๆ */
+    align-items: center;
+    margin-top: 24px;
+    /* เพิ่มระยะห่างลงมาจากปุ่มกด (ขยับลงมาให้ไม่ชิดเกินไป) */
+    width: 100%;
+    /* บังคับเต็มความกว้างกล่องเพื่อให้เซนเตอร์ทำงาน */
+}
+
+.encryption-text {
+    font-size: 12px;
+    color: #475569;
+    /* สีสลัวสไตล์หรูหรา ไม่แย่งความเด่นของปุ่ม */
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    /* ระยะห่างระหว่างไอคอนโล่กับตัวหนังสือ */
+    letter-spacing: 0.02em;
+}
+
+.encryption-text{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+
+    color:#7c8ea8;
+    font-size:13px;
+}
+
+.shield-icon{
+    color:#06b6d4;
+    font-size:14px;
+}
+
+.logo-box{
+    width:140px;
+    height:140px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:auto;
+}
+
+.login-logo{
+    width:130px;
+    height:auto;
+
+    filter:
+        drop-shadow(0 0 15px #00bfff)
+        drop-shadow(0 0 30px #00bfff);
+}
