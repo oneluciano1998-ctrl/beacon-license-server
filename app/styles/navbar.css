@@ -1,0 +1,136 @@
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:transparent;
+    backdrop-filter:none;
+    border-bottom:none;
+    box-shadow:none;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+.logo{
+    white-space:nowrap;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-shrink:0;
+    font-size:clamp(18px,3vw,24px);
+    font-weight:800;
+    color:#00bfff;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    filter:drop-shadow(0 0 10px #00bfff);
+}
+
+.auth-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.navbar-menu a{
+    position:relative;
+    color:#94a3b8;
+    text-decoration:none;
+    font-size:clamp(14px,2vw,16px);
+    font-weight:500;
+    padding:8px 0;
+    margin:0 20px;
+    display:inline-block;
+    transition:color .3s ease,text-shadow .3s ease;
+}
+
+.navbar-menu a:hover{
+    color:#00bfff;
+    text-shadow:0 0 10px rgba(0,191,255,.6);
+}
+
+.navbar-menu a::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:50%;
+    width:0;
+    height:2px;
+    background:#00bfff;
+    box-shadow:0 0 8px #00bfff;
+    transition:width .3s ease,left .3s ease;
+}
+
+.navbar-menu a:hover::after{
+    width:100%;
+    left:0;
+}
+
+#admin-menu{
+    color:#00d4ff;
+    font-weight:600;
+}
+
+#adminMenu:hover{
+    text-shadow:0 0 10px #00d4ff;
+}
+
+.menu-toggle{
+    display:none;
+    background:transparent;
+    border:none;
+    color:#00bfff;
+    font-size:clamp(24px,4vw,32px);
+    cursor:pointer;
+}
+
+@media screen and (max-width:768px){
+
+    nav{
+        flex-direction:row;
+        justify-content:space-between;
+        padding:20px;
+        position:relative;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .navbar-menu{
+        display:none;
+        position:absolute;
+        top:90px;
+        left:0;
+        width:100%;
+        background:transparent;
+        flex-direction:column;
+        gap:15px;
+        padding:20px;
+        border-top:1px solid rgba(255,255,255,.1);
+    }
+
+    .navbar-menu.active{
+        display:flex;
+    }
+
+    .navbar-menu a{
+        margin:0;
+        text-align:center;
+    }
+
+    .auth-buttons{
+        flex-direction:column;
+    }
+}

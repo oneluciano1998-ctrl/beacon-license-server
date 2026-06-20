@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "./reviews.css";
+import "../styles/reviews.css";
 
 export default function ReviewsPage() {
   return (
@@ -21,31 +21,32 @@ export default function ReviewsPage() {
         <p>ผลลัพธ์และความคิดเห็นจากผู้ใช้งานจริง</p>
       </section>
 
-      <section className="review-section">
-        <div className="review-card">
-          <div className="stars">★★★★★</div>
+        <section className="reviews">
 
-          <h3>Forex Trader</h3>
+        <h2 className="section-title">
+            Trader Reviews
+        </h2>
 
-          <p>ใช้งานง่ายมาก เซ็ตครั้งเดียวแล้วปล่อยรันได้เลย</p>
+        <div className="review-grid">
+
+            <div className="review-card">
+            ⭐⭐⭐⭐⭐
+            <p>กำไรสม่ำเสมอ ใช้งานง่าย</p>
+            </div>
+
+            <div className="review-card">
+            ⭐⭐⭐⭐⭐
+            <p>ระบบจัดการ DD ดีมาก</p>
+            </div>
+
+            <div className="review-card">
+            ⭐⭐⭐⭐⭐
+            <p>เหมาะกับเทรดทองคำ</p>
+            </div>
+
         </div>
 
-        <div className="review-card">
-          <div className="stars">★★★★★</div>
-
-          <h3>Gold Trader</h3>
-
-          <p>กำไรต่อเนื่องและ Drawdown ต่ำ</p>
-        </div>
-
-        <div className="review-card">
-          <div className="stars">★★★★★</div>
-
-          <h3>EA User</h3>
-
-          <p>ทีมงานตอบไวและช่วยเหลือตลอด</p>
-        </div>
-      </section>
+        </section>
 
       <section className="review-gallery">
         <h2 className="section-title">Real Results</h2>

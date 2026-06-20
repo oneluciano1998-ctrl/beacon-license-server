@@ -1,0 +1,238 @@
+/* =====================================================
+   HOME PAGE
+===================================================== */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+    justify-items:center;
+}
+
+.card {
+    width:100%;
+    max-width:250px;
+    padding: 40px;
+    text-align: center;
+    backdrop-filter:blur(15px);
+    backdrop-filter:blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.card h2 {
+    font-size: clamp(22px, 6vw, 42px);
+    color: #00bfff;
+}
+
+.brokers {
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.brokers h2{
+    color:#00bfff;
+    font-size:clamp(28px,5vw,42px);
+    text-shadow:
+      0 0 10px #00bfff,
+      0 0 20px #00bfff;
+    margin-bottom:40px;
+}
+
+.broker-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(220px,1fr)
+    );
+
+    gap:20px;
+}
+
+.broker-box{
+    padding:30px;
+    background:rgba(255,255,255,.05);
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.1);
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+}
+
+.broker-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #00bfff;
+}
+
+.login-btn {
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid #00bfff;
+    color: white;
+    cursor: pointer;
+}
+
+.register-btn {
+    padding: 10px 20px;
+    background: #00bfff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:80vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:0 10%;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 8vw, 80px);
+    font-weight: 800;
+}
+
+.hero span {
+    color: #00bfff;
+    text-shadow: 0 0 15px #00bfff, 0 0 35px #00bfff;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: clamp(16px, 2vw, 20px);
+    max-width: 800px;
+    opacity: .8;
+}
+
+.hero-buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hero-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+
+    .hero-logo{
+    width: clamp(120px, 18vw, 220px);
+    margin:0 auto 30px;
+    display:block;
+    filter:drop-shadow(0 0 30px #00bfff);
+    animation:glow 3s infinite;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 15px 35px;
+    background: #00bfff;
+    border: none;
+    border-radius: 10px;
+    font-size: clamp(14px, 2vw, 16px);
+    cursor: pointer;
+}
+
+.secondary-btn {
+    padding: 15px 35px;
+    background: transparent;
+    border: 1px solid #00bfff;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    .hero {
+        min-height: auto;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: clamp(20px, 6vw, 42px);
+        line-height: 1.1;
+    }
+
+    .hero p {
+        font-size: clamp(14px, 4vw, 16px);
+        padding: 0 10px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+    }
+
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .brokers {
+        padding: 60px 20px;
+    }
+
+}
+
+.performance{
+    padding:100px 10%;
+}
+
+.performance-box{
+    display:grid;
+
+    grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(250px,1fr)
+    );
+
+    gap:20px;
+}
+
+.perf-card{
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter: none;
+    text-align:center;
+}
+.contact{
+    padding:80px 20px;
+    text-align:center;
+    background:transparent;
+}
+
+.hero,
+.brokers,
+.contact{
+    background:transparent;
+}

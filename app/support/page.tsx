@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "./support.css";
+import "../styles/support.css";
 
 export default function SupportPage() {
   return (

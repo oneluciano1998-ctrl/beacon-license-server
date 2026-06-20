@@ -1,24 +1,34 @@
-          import Link from "next/link";
-          import "./home.css";
+"use client";
 
-          export default function Home() {
+import { useState } from "react";
+import Link from "next/link";
+import "./styles/home.css";
+
+export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <main>
+    <main className="main-layout">
       <nav>
         <div className="logo">
-    <img src="/logoea.png" alt="Beast Tamer Logo" />        
-    <span>BEAST TAMER</span>
+          <img src="/logoea.png" alt="Beast Tamer Logo" />
+          <span>BEAST TAMER</span>
         </div>
 
-        <div className="navbar-menu">
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
+
+        <div className={`navbar-menu ${menuOpen ? "active" : ""}`}>
           <Link href="/">Home</Link>
           <Link href="/performance">Performance</Link>
           <Link href="/pricing">Pricing</Link>
           <Link href="/reviews">Reviews</Link>
           <Link href="/support">Support</Link>
-        </div>
 
-        <div className="auth-buttons">
           <a href="/login" className="login-btn">
             Login
           </a>
@@ -41,26 +51,12 @@
             EA <span>BEAST TAMER</span>
           </h1>
 
-          <p>ระบบเทรดอัตโนมัติสำหรับ Forex และ Gold</p>
+          <p>Smart Gold Trading System
+Built for Consistency & Growth ระบบเทรดทองคำอัตโนมัติ
+ออกแบบสำหรับเทรดเดอร์ที่ต้องการผลลัพธ์ระยะยาว</p>
         </div>
       </section>
 
-      <section className="stats">
-        <div className="card">
-          <h2>95%</h2>
-          <p>Win Rate</p>
-        </div>
-
-        <div className="card">
-          <h2>24/7</h2>
-          <p>Auto Trading</p>
-        </div>
-
-        <div className="card">
-          <h2>+125%</h2>
-          <p>Growth</p>
-        </div>
-      </section>
 
       <section className="brokers">
         <h2>Open Account With Our Partner</h2>
@@ -84,13 +80,35 @@
         </div>
       </section>
 
-      <footer>
-        <h3>Contact Us</h3>
+      <section className="contact">
 
-        <p>Facebook</p>
-        <p>LINE OA</p>
-        <p>Telegram</p>
-      </footer>
+        <h2 className="section-title">
+          Get Started Today
+        </h2>
+
+        <p>
+          ติดต่อเพื่อรับ EA และคำแนะนำการใช้งาน
+        </p>
+
+        <div className="hero-buttons">
+
+          <a
+            href="https://line.me/..."
+            className="primary-btn"
+          >
+            LINE OA
+          </a>
+
+          <a
+            href="https://t.me/..."
+            className="secondary-btn"
+          >
+            Telegram
+          </a>
+
+        </div>
+
+      </section>
     </main>
   );
 }

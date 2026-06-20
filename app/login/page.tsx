@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FaShieldAlt } from "react-icons/fa";
 import { ImGithub } from "react-icons/im";
-import "./login.css";
+import "../styles/login.css";
 
 export default function LoginPage() {
   return (

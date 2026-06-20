@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "./performance.css";
+import "../styles/performance.css";
 
 export default function PerformancePage() {
   return (
@@ -21,30 +21,64 @@ export default function PerformancePage() {
         <p>Real Trading Results & Statistics</p>
       </section>
 
-      <section className="statistics">
-        <div className="stat-box">
+    <main className="performance-page">
+
+      <h1>Performance Report</h1>
+
+      <div className="stats-grid">
+
+        <div className="stat-card">
           <h2>95%</h2>
-          <span>Win Rate</span>
+          <p>Win Rate</p>
         </div>
 
-        <div className="stat-box">
-          <h2>1.85</h2>
-          <span>Profit Factor</span>
-        </div>
-
-        <div className="stat-box">
+        <div className="stat-card">
           <h2>8%</h2>
-          <span>Max Drawdown</span>
+          <p>Max Drawdown</p>
         </div>
 
-        <div className="stat-box">
-          <h2>5,243</h2>
-          <span>Total Trades</span>
+        <div className="stat-card">
+          <h2>125%</h2>
+          <p>Total Growth</p>
         </div>
-      </section>
+
+      </div>
+
+    </main>
+    <section className="proof-section">
+
+    <h2 className="section-title">Trading Proof</h2>
+
+  <div className="proof-grid">
+
+    <img src="/ea.png" alt="myfxbook" />
+
+    <img src="/ea.png" alt="fxblue" />
+
+    <img src="/ea.png" alt="statement" />
+
+  </div>
+
+</section>
+
+<section className="review-section">
+
+  <h2 className="section-title">Verified Trader Reviews</h2>
+
+  <div className="review-gallery">
+
+    <img src="/reviews/ea.png" />
+
+    <img src="/reviews/ea.png" />
+
+    <img src="/reviews/ea.png" />
+
+  </div>
+
+</section>
 
       <section className="growth">
-        <h2>Account Growth</h2>
+        <h2 className="section-title">Account Growth</h2>
 
         <img
           src="/ea.png"
@@ -54,7 +88,7 @@ export default function PerformancePage() {
       </section>
 
       <section className="backtest">
-        <h2>Backtest Results</h2>
+        <h2 className="section-title">Backtest Results</h2>
 
         <img
           src="/backtest.jpg"

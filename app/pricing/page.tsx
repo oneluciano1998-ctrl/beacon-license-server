@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-import "./pricing.css";
+import "../styles/pricing.css";
 
 export default function PricingPage() {
   return (
