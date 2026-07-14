@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "../styles/reviews.css";
+import "./reviews.css";
 
 export default function ReviewsPage() {
   return (

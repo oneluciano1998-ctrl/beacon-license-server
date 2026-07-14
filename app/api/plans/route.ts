@@ -5,7 +5,7 @@ export async function GET() {
   try {
 
     const [rows] = await pool.query(`
-      SELECT
+        SELECT
         id,
         name,
         description,
@@ -14,8 +14,8 @@ export async function GET() {
         max_accounts,
         status,
         created_at
-      FROM plans
-      ORDER BY id ASC
+        FROM plans
+        ORDER BY id ASC
     `);
 
     return NextResponse.json(rows);

@@ -1,0 +1,447 @@
+/* ==========================================================
+   Customers Page
+========================================================== */
+
+.customers-page{
+    padding:30px;
+    color:white;
+    min-height:100vh;
+    background:#020817;
+}
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.customers-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:30px;
+}
+
+.customers-header-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.customers-header-left{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.customers-page-title{
+    margin:8px 0;
+    font-size:32px;
+    color:white;
+}
+
+.customers-page-description{
+    color:#94a3b8;
+    margin-bottom:15px;
+}
+
+/* ==========================================================
+   Header Components
+========================================================== */
+
+.customers-back-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    height:40px;
+    min-width:205px;
+    padding:0 18px;
+
+    border-radius:12px;
+    border:1px solid rgba(0,191,255,.25);
+
+    background:rgba(0,191,255,.08);
+
+    color:#00bfff;
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:.25s;
+}
+
+.customers-back-btn:hover{
+    background:rgba(0,191,255,.15);
+    transform:translateY(-2px);
+
+    box-shadow:0 0 18px rgba(0,191,255,.25);
+}
+
+.customers-page-tag{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    height:40px;
+    min-width:185px;
+    padding:0 16px;
+
+    border-radius:999px;
+
+    background:#102b55;
+    border:1px solid #1d4ed8;
+
+    color:#60a5fa;
+
+    font-size:12px;
+    font-weight:600;
+
+    box-sizing:border-box;
+}
+
+/* ==========================================================
+   Statistics Card
+========================================================== */
+
+.customers-stat-card{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    min-width:190px;
+    height:90px;
+
+    padding:10px 18px;
+
+    border-radius:14px;
+    border:1px solid rgba(56,189,248,.2);
+
+    background:#071426;
+    color:#94a3b8;
+}
+
+.customers-stat-card span{
+    color:#22d3ee;
+    font-size:18px;
+    font-weight:700;
+}
+
+/* ==========================================================
+   Header Actions
+========================================================== */
+
+.customers-header-right{
+    display:flex;
+    align-items:stretch;
+    gap:12px;
+}
+
+.customers-search-box{
+    width:260px;
+    height:52px;
+
+    padding:12px 16px;
+
+    border:1px solid rgba(56,189,248,.2);
+    border-radius:14px;
+
+    background:#071426;
+    color:white;
+}
+
+.customers-search-box:focus{
+    outline:none;
+    border-color:#0ea5e9;
+    box-shadow:0 0 15px rgba(14,165,233,.3);
+}
+
+.customers-add-btn{
+    height:52px;
+
+    padding:12px 20px;
+
+    border:none;
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        #0ea5e9,
+        #06b6d4
+    );
+
+    color:white;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.customers-add-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 20px rgba(14,165,233,.4);
+}
+
+/* ==========================================================
+   Table
+========================================================== */
+
+.customers-table-wrapper{
+    overflow:hidden;
+
+    border:1px solid #00bfff30;
+    border-radius:16px;
+
+    background:#071426;
+}
+
+.customers-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.customers-table th{
+    padding:20px;
+
+    background:#081a33;
+
+    color:#00bfff;
+    text-align:left;
+}
+
+.customers-table td{
+    padding:20px;
+    border-top:1px solid #ffffff10;
+}
+
+.customers-table tbody tr:hover{
+    background:#0d2345;
+}
+
+.customers-empty-state{
+    text-align:center;
+    padding:40px;
+    color:#94a3b8;
+    font-size:15px;
+}
+
+/* ==========================================================
+   Status Badge
+========================================================== */
+
+.customers-status-active{
+    padding:6px 12px;
+    border-radius:20px;
+    background:#00ff8840;
+    color:#00ff88;
+    font-size:13px;
+}
+
+.customers-status-inactive{
+    padding:6px 12px;
+    border-radius:20px;
+    background:#ef444440;
+    color:#ef4444;
+    font-size:13px;
+}
+
+.customers-status-suspended{
+    padding:6px 12px;
+    border-radius:20px;
+    background:#f59e0b33;
+    color:#f59e0b;
+    font-size:13px;
+}
+
+/* ==========================================================
+   Action Buttons
+========================================================== */
+
+.customers-edit-btn{
+    padding:8px 16px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#00bfff;
+    color:white;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.customers-edit-btn:hover{
+    transform:translateY(-2px);
+}
+
+.customers-delete-btn{
+    margin-left:8px;
+
+    padding:8px 14px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#ef4444;
+    color:white;
+
+    cursor:pointer;
+}
+
+.customers-delete-btn:hover{
+    background:#dc2626;
+}
+
+/* ==========================================================
+   Modal
+========================================================== */
+
+.customers-modal-overlay{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.7);
+
+    z-index:999;
+}
+
+.customers-modal-box{
+    width:100%;
+    max-width:520px;
+
+    padding:30px;
+
+    border:1px solid rgba(14,165,233,.2);
+    border-radius:20px;
+
+    background:#071426;
+
+    box-sizing:border-box;
+
+    animation:customers-popup .25s ease;
+}
+
+.customers-modal-box h2{
+    margin-bottom:20px;
+}
+
+.customers-modal-box input,
+.customers-modal-box select{
+    width:100%;
+
+    margin-bottom:16px;
+
+    padding:12px;
+
+    border:1px solid #1e293b;
+    border-radius:10px;
+
+    background:#020817;
+    color:white;
+}
+
+/* ==========================================================
+   Modal Actions
+========================================================== */
+
+.customers-modal-actions{
+    display:flex;
+    gap:12px;
+
+    margin-top:24px;
+}
+
+.customers-modal-actions button{
+    flex:1;
+}
+
+.customers-modal-actions select{
+    height:48px;
+
+    padding:10px 12px;
+
+    border:1px solid #1e293b;
+    border-radius:10px;
+
+    background:#020817;
+    color:white;
+}
+
+/* ==========================================================
+   Buttons
+========================================================== */
+
+.customers-save-btn,
+.customers-cancel-btn{
+    min-width:150px;
+    height:48px;
+
+    padding:10px 20px;
+
+    border:none;
+    border-radius:10px;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.customers-save-btn{
+    background:#00bfff;
+    color:white;
+}
+
+.customers-save-btn:hover{
+    opacity:.9;
+}
+
+.customers-cancel-btn{
+    background:#334155;
+    color:white;
+}
+
+.customers-cancel-btn:hover{
+    background:#475569;
+}
+
+/* ==========================================================
+   Animation
+========================================================== */
+
+@keyframes customers-popup{
+
+    from{
+        opacity:0;
+        transform:scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+@media(max-width:900px){
+
+    .customers-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .customers-header-right{
+        width:100%;
+        flex-direction:column;
+    }
+
+    .customers-search-box{
+        width:100%;
+    }
+
+}

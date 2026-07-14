@@ -1,0 +1,1094 @@
+/* ==========================================================
+   License Page
+========================================================== */
+
+.licenses-page{
+    padding:30px;
+    color:#fff;
+    min-height:100vh;
+    background:#020817;
+}
+
+
+/* ==========================================================
+   Header Layout
+========================================================== */
+
+.licenses-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+
+    gap:24px;
+
+    margin-bottom:35px;
+}
+
+.licenses-header-left{
+    flex:1;
+}
+
+.licenses-header-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.licenses-header-top{
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:20px;
+}
+
+
+/* ==========================================================
+   Back Button
+========================================================== */
+
+.licenses-back-btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    height:40px;
+    min-width:205px;
+
+    padding:0 18px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(0,191,255,.25);
+
+    background:rgba(0,191,255,.08);
+
+    color:#00bfff;
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:600;
+
+}
+
+.licenses-back-btn:hover{
+
+    background:rgba(0,191,255,.15);
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 18px rgba(0,191,255,.25);
+
+}
+
+
+/* ==========================================================
+   Page Tag
+========================================================== */
+
+.licenses-page-tag{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    height:40px;
+    min-width:185px;
+
+    padding:0 16px;
+
+    border-radius:999px;
+
+    background:#102b55;
+    border:1px solid #1d4ed8;
+
+    color:#60a5fa;
+
+    font-size:12px;
+    font-weight:600;
+
+}
+
+
+/* ==========================================================
+   Title
+========================================================== */
+
+.licenses-page-title{
+
+    margin:0;
+
+    font-size:38px;
+    color:#fff;
+
+}
+
+.licenses-page-description{
+
+    margin-top:8px;
+
+    color:#94a3b8;
+
+    font-size:15px;
+    line-height:1.6;
+
+}
+
+
+/* ==========================================================
+   Statistics
+========================================================== */
+
+.licenses-stats-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+
+    gap:18px;
+
+    margin-top:28px;
+
+}
+
+.licenses-stat-card{
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    min-height:95px;
+
+    padding:20px;
+
+    border-radius:14px;
+
+    background:#071426;
+
+    border:1px solid rgba(56,189,248,.20);
+
+}
+
+.licenses-stat-card:hover{
+
+    border-color:#38bdf8;
+
+    transform:translateY(-3px);
+
+}
+
+.licenses-stat-card h3{
+
+    color:#94a3b8;
+
+    font-size:14px;
+    font-weight:500;
+
+    margin:0;
+
+}
+
+.licenses-stat-card span{
+
+    margin-top:10px;
+
+    color:#22d3ee;
+
+    font-size:28px;
+    font-weight:700;
+
+}
+
+
+/* ==========================================================
+   Search / Filter
+========================================================== */
+
+.licenses-search-box,
+.licenses-status-filter{
+
+    height:50px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(56,189,248,.20);
+
+    background:#071426;
+
+    color:#fff;
+
+}
+
+.licenses-search-box{
+
+    flex:1;
+    min-width:280px;
+    max-width:380px;
+
+    padding:0 16px;
+
+}
+
+.licenses-status-filter{
+
+    min-width:170px;
+
+    padding:0 14px;
+
+    cursor:pointer;
+
+}
+
+.licenses-search-box:focus,
+.licenses-status-filter:focus{
+
+    outline:none;
+
+    border-color:#38bdf8;
+
+    box-shadow:
+        0 0 15px rgba(56,189,248,.30);
+
+}
+
+
+/* ==========================================================
+   Create License Button
+========================================================== */
+
+.licenses-create-btn{
+
+    height:50px;
+
+    padding:0 22px;
+
+    border:none;
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0ea5e9,
+            #06b6d4
+        );
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.licenses-create-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(14,165,233,.35);
+
+}
+
+/* ==========================================================
+   Table
+========================================================== */
+
+.licenses-table-wrapper{
+
+    margin-top:28px;
+    margin-bottom:30px;
+
+    background:#071426;
+
+    border:1px solid rgba(56,189,248,.20);
+
+    border-radius:16px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+    scrollbar-width:thin;
+
+    scrollbar-color:#1e40af #071426;
+
+    overflow:auto;
+
+}
+
+.licenses-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.licenses-table thead{
+
+    background:#081a33;
+
+}
+
+.licenses-table th{
+
+    padding:18px 20px;
+
+    text-align:left;
+
+    color:#38bdf8;
+
+    font-size:14px;
+    font-weight:600;
+
+    white-space:nowrap;
+
+}
+
+.licenses-table td{
+
+    padding:18px 20px;
+
+    color:#dbeafe;
+
+    border-top:1px solid rgba(255,255,255,.05);
+
+    white-space:nowrap;
+
+}
+
+.licenses-table tbody tr{
+
+    transition:
+        background .25s,
+        transform .2s;
+
+}
+
+.licenses-table tbody tr:hover{
+
+    background:#0b2343;
+    transform:translateX(3px);
+
+}
+
+
+/* ==========================================================
+   Status Badge
+========================================================== */
+
+.licenses-status-badge{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:90px;
+    letter-spacing:.3px;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+    font-weight:700;
+
+    text-transform:capitalize;
+
+}
+
+.licenses-status-active{
+
+    background:#16a34a;
+    color:#fff;
+
+}
+
+.licenses-status-expired{
+
+    background:#dc2626;
+    color:#fff;
+
+}
+
+.licenses-status-disabled{
+
+    background:#64748b;
+    color:#fff;
+
+}
+
+
+/* ==========================================================
+   Action Buttons
+========================================================== */
+
+.licenses-edit-btn,
+.licenses-delete-btn,
+.licenses-view-btn,
+.licenses-copy-btn{
+
+    min-width:80px;
+
+    padding:8px 14px;
+
+    border:none;
+
+    border-radius:8px;
+
+}
+
+.licenses-edit-btn{
+
+    background:#0ea5e9;
+
+    margin-right:8px;
+
+}
+
+.licenses-edit-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 14px rgba(14,165,233,.35);
+
+}
+
+.licenses-delete-btn{
+
+    background:#ef4444;
+
+}
+
+.licenses-delete-btn:hover{
+
+    background:#dc2626;
+
+}
+
+.licenses-view-btn{
+
+    background:#16a34a;
+
+}
+
+.licenses-view-btn:hover{
+
+    background:#15803d;
+
+}
+
+.licenses-copy-btn{
+
+    background:#2563eb;
+
+}
+
+.licenses-copy-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+/* ==========================================================
+   Days Left
+========================================================== */
+
+.licenses-info-text{
+
+    color:#22d3ee;
+
+    font-weight:700;
+
+}
+
+.licenses-danger-text{
+
+    color:#ef4444;
+
+    font-weight:700;
+
+}
+
+.licenses-expired-text{
+
+    color:#ef4444;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   Pagination
+========================================================== */
+
+.licenses-pagination{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:16px;
+
+    margin-top:30px;
+
+}
+
+.licenses-pagination-info{
+
+    color:#94a3b8;
+
+    font-size:15px;
+    font-weight:600;
+
+}
+
+.licenses-pagination-btn{
+
+    min-width:120px;
+    height:46px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#0ea5e9;
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.licenses-pagination-btn:hover:not(:disabled){
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 18px rgba(14,165,233,.35);
+
+}
+
+.licenses-pagination-btn:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+/* ==========================================================
+   Modal Overlay
+========================================================== */
+
+.licenses-modal-overlay{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.70);
+
+    backdrop-filter:blur(4px);
+
+    z-index:999;
+
+}
+
+
+/* ==========================================================
+   Modal Box
+========================================================== */
+
+.licenses-modal-box{
+
+    width:100%;
+    max-width:560px;
+
+    background:#071426;
+
+    border:1px solid rgba(56,189,248,.20);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-sizing:border-box;
+
+    animation:licenses-popup .25s ease;
+
+    overflow-y:auto;
+    max-height:90vh;
+
+}
+
+.licenses-modal-view{
+
+    max-width:620px;
+
+}
+
+.licenses-modal-box h2{
+
+    margin-bottom:22px;
+
+    color:#fff;
+
+    font-size:24px;
+    font-weight:700;
+
+}
+
+
+/* ==========================================================
+   Form
+========================================================== */
+
+.licenses-form-input{
+
+    width:100%;
+    height:50px;
+
+    padding:0 16px;
+
+    margin-bottom:16px;
+
+    border-radius:12px;
+
+    border:1px solid #1e293b;
+
+    background:#020817;
+
+    color:#fff;
+
+    font-size:14px;
+
+}
+
+.licenses-form-input:focus{
+
+    outline:none;
+
+    border-color:#38bdf8;
+
+    box-shadow:
+        0 0 15px rgba(56,189,248,.30);
+
+}
+
+.licenses-form-input::placeholder{
+
+    color:#64748b;
+
+}
+
+
+/* ==========================================================
+   Modal Actions
+========================================================== */
+
+.licenses-modal-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:24px;
+
+}
+
+.licenses-modal-actions button{
+
+    flex:1;
+
+}
+
+
+/* ==========================================================
+   Save Button
+========================================================== */
+
+.licenses-save-btn{
+
+    height:48px;
+
+    border:none;
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #0ea5e9,
+        #06b6d4
+    );
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.licenses-save-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(14,165,233,.35);
+
+}
+
+
+/* ==========================================================
+   Cancel Button
+========================================================== */
+
+.licenses-cancel-btn{
+
+    height:48px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#334155;
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.licenses-cancel-btn:hover{
+
+    background:#475569;
+
+}
+
+
+/* ==========================================================
+   License Detail
+========================================================== */
+
+.licenses-modal-view p{
+
+    display:flex;
+    justify-content:space-between;
+
+    padding:12px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    color:#cbd5e1;
+
+    font-size:15px;
+
+}
+
+.licenses-modal-view p:last-of-type{
+
+    margin-bottom:20px;
+
+}
+
+.licenses-modal-view strong{
+
+    color:#fff;
+
+}
+
+
+/* ==========================================================
+   Popup Animation
+========================================================== */
+
+@keyframes licenses-popup{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            scale(.95)
+            translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width:1024px){
+
+    .licenses-header{
+
+        flex-direction:column;
+        align-items:stretch;
+
+    }
+
+    .licenses-header-right{
+
+        width:100%;
+
+        justify-content:flex-start;
+
+        flex-wrap:wrap;
+
+    }
+
+    .licenses-search-box{
+
+        flex:1;
+        min-width:260px;
+
+    }
+
+    .licenses-status-filter{
+
+        width:180px;
+
+    }
+
+    .licenses-create-btn{
+
+        width:auto;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .licenses-page{
+
+        padding:20px;
+
+    }
+
+    .licenses-header-top{
+
+        flex-direction:column;
+        align-items:flex-start;
+
+    }
+
+    .licenses-back-btn{
+
+        width:100%;
+
+    }
+
+    .licenses-page-tag{
+
+        margin-left:0;
+
+    }
+
+    .licenses-page-title{
+
+        font-size:30px;
+
+    }
+
+    .licenses-stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .licenses-header-right{
+
+        flex-direction:column;
+
+        width:100%;
+
+    }
+
+    .licenses-search-box,
+    .licenses-status-filter,
+    .licenses-create-btn{
+
+        width:100%;
+
+    }
+
+    .licenses-pagination{
+
+        flex-wrap:wrap;
+
+    }
+
+    .licenses-pagination-btn{
+
+        width:100%;
+
+    }
+
+    .licenses-modal-box{
+
+        width:95%;
+
+        padding:22px;
+
+    }
+
+    .licenses-modal-actions{
+
+        flex-direction:column;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Table Scroll
+========================================================== */
+
+.licenses-table-wrapper::-webkit-scrollbar{
+
+    height:10px;
+
+}
+
+.licenses-table-wrapper::-webkit-scrollbar-track{
+
+    background:#071426;
+
+}
+
+.licenses-table-wrapper::-webkit-scrollbar-thumb{
+
+    background:#1e40af;
+
+    border-radius:999px;
+
+}
+
+.licenses-table-wrapper::-webkit-scrollbar-thumb:hover{
+
+    background:#2563eb;
+
+}
+
+
+/* ==========================================================
+   Selection
+========================================================== */
+
+.licenses-page ::selection{
+
+    background:#0ea5e9;
+
+    color:#fff;
+
+}
+
+
+/* ==========================================================
+   Smooth Transition
+========================================================== */
+
+.licenses-page button,
+.licenses-page input,
+.licenses-page select,
+.licenses-page a{
+    transition:.25s;
+}
+
+
+/* ==========================================================
+   Empty State
+========================================================== */
+
+.licenses-empty-state{
+
+    padding:40px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    vertical-align:middle;
+
+}
+
+
+/* ==========================================================
+   Loading
+========================================================== */
+
+.licenses-loading{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+    color:#38bdf8;
+
+    font-size:22px;
+    font-weight:600;
+
+}
+
+
+/* ==========================================================
+   Fade Animation
+========================================================== */
+
+@keyframes licenses-fade-in{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+.licenses-fade-in{
+
+    animation:licenses-fade-in .25s ease;
+
+}
+/* ==========================================================
+   End Of File
+========================================================== */

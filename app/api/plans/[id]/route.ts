@@ -68,3 +68,54 @@ export async function DELETE(
     );
   }
 }
+
+export async function PUT(
+  request: Request,
+  context: {
+    params: Promise<{
+      id: string;
+    }>;
+  }
+) {
+
+  try {
+
+    const { id } =
+      await context.params;
+
+    const body =
+      await request.json();
+
+    await pool.query(
+      `
+      UPDATE plans
+      SET status = ?
+      WHERE id = ?
+      `,
+      [
+        body.status,
+        id,
+      ]
+    );
+
+    return NextResponse.json({
+      success: true,
+    });
+
+    } catch (error) {
+
+    console.error(
+        "PUT PLAN ERROR:",
+        error
+    );
+
+    return NextResponse.json({
+        success: false,
+        error:
+        error instanceof Error
+            ? error.message
+            : "Unknown Error",
+    });
+
+    }
+}

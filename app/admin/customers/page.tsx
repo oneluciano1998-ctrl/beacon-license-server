@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import "../styles/customers.css";
+import "./customers.css";
 import Link from "next/link";
 
 interface Customer {
@@ -24,7 +24,25 @@ export default function CustomersPage() {
 
 const [editName, setEditName] = useState("");
 const [editEmail, setEditEmail] = useState("");
-const [editRole, setEditRole] = useState("");
+
+const fetchCustomers = async () => {
+  try {
+    const res = await fetch("/api/customers");
+    const data = await res.json();
+
+    if (data.success) {
+      setCustomers(data.customers);
+    } else {
+      console.log(data);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+useEffect(() => {
+  fetchCustomers();
+}, []);
 
     const saveCustomer = async () => {
 
@@ -44,13 +62,31 @@ const [editRole, setEditRole] = useState("");
         }),
     });
 
-    const data = await res.json();
+const data = await res.json();
 
-    if (data.success) {
-        alert("Customer Created");
-        location.reload();
+console.log("Response:", data);
+
+if (data.success) {
+
+    alert("Customer Created");
+
+    setShowModal(false);
+
+    fetchCustomers();
+
+    setFullName("");
+    setEmail("");
+    setPassword("");
+    setRoleId(4);
+
+} else {
+
+    alert(data.message || "Create Failed");
+    console.log(data);
+
+}
     }
-    };
+
     const openEditModal = (customer: Customer) => {
   setEditingCustomer(customer);
 
@@ -77,10 +113,15 @@ const updateCustomer = async () => {
 
   const data = await res.json();
 
-  if (data.success) {
+if (data.success) {
+
     alert("Customer Updated");
-    location.reload();
-  } else {
+
+    setEditingCustomer(null);
+
+    fetchCustomers();
+
+} else {
     alert("Update Failed");
   }
 };
@@ -102,69 +143,84 @@ const deleteCustomer = async (id: number) => {
 
   const data = await res.json();
 
-  if (data.success) {
+if (data.success) {
+
     alert("Customer Deleted");
-    location.reload();
-  } else {
+
+    fetchCustomers();
+
+} else {
     alert("Delete Failed");
   }
 };
 
   return (
     
-    <main
-      style={{
-        padding: "30px",
-        color: "white",
-        background: "#020817",
-        minHeight: "100vh",
-      }}
-    >
-        <div className="customers-header">
+<main className="customers-page">
 
-        <div className="header-left">
-            <Link href="/dashboard" className="back-btn">← Back to Dashboard</Link>
-            <span className="page-tag">CUSTOMERS</span>
+  <div className="customers-header">
 
-            <h1>👥 Customer Management</h1>
+    {/* ==========================
+        Left
+    ========================== */}
 
-            <p>
-            Manage all customers, licenses and account status
-            </p>
+    <div className="customers-header-left">
 
-            <div className="stat-card">
-            Total Customers
-            <span>{customers.length}</span>
-            </div>
+      <div className="customers-header-top">
+
+        <Link
+          href="/dashboard"
+          className="customers-back-btn"
+        >
+          ← Back to Dashboard
+        </Link>
+
+        <div className="customers-page-tag">
+          BEACON LICENSE SERVER
         </div>
 
-        <div className="header-right">
+      </div>
 
-            <input
-            type="text"
-            placeholder="🔍 Search customer..."
-            className="search-box"
-            />
+      <h1 className="customers-page-title">
+        👥 Customer Management
+      </h1>
 
-            <button
-            className="add-user-btn"
-            onClick={() => setShowModal(true)}
-            >
-            + Add Customer
-            </button>
+      <p className="customers-page-description">
+        Manage all customers, licenses and account status
+      </p>
 
-        </div>
+      <div className="customers-stat-card">
+        <h3>Total Customers</h3>
+        <span>{customers.length}</span>
+      </div>
 
-        </div>
+    </div>
 
-      <div className="table-wrapper">
-      <table
-        style={{
-          width: "100%",
-          marginTop: "20px",
-          borderCollapse: "collapse",
-        }}
+    {/* ==========================
+        Right
+    ========================== */}
+
+    <div className="customers-header-right">
+
+      <input
+        type="text"
+        placeholder="🔍 Search customer..."
+        className="customers-search-box"
+      />
+
+      <button
+        className="customers-add-btn"
+        onClick={() => setShowModal(true)}
       >
+        + Add Customer
+      </button>
+
+    </div>
+
+  </div>
+
+      <div className="customers-table-wrapper">
+      <table className="customers-table">
         <thead>
         <tr>
             <th>ID</th>
@@ -177,47 +233,75 @@ const deleteCustomer = async (id: number) => {
         </thead>
         
 
-            <tbody>
-            {customers.map((customer) => (
-                <tr key={customer.id}>
-                <td>{customer.id}</td>
-                <td>{customer.full_name}</td>
-                <td>{customer.email}</td>
-                <td>{customer.role}</td>
+<tbody>
 
-                <td>
-                    <span className="status-active">
-                    Active
-                    </span>
-                </td>
-                <td>
-                <button
-                    className="edit-btn"
-                    onClick={() => openEditModal(customer)}
-                >
-                    Edit
-                </button>
+{customers.length === 0 ? (
 
-                <button
-                    className="delete-btn"
-                    onClick={() => deleteCustomer(customer.id)}
-                >
-                    Delete
-                </button>
-                </td>
+<tr>
 
-                </tr>
-            ))}
-            </tbody>
+<td
+    colSpan={6}
+    className="customers-empty-state"
+>
+    No Customers Found
+</td>
+
+</tr>
+
+) : (
+
+customers.map((customer) => (
+
+<tr key={customer.id}>
+
+    <td>{customer.id}</td>
+
+    <td>{customer.full_name}</td>
+
+    <td>{customer.email}</td>
+
+    <td>{customer.role}</td>
+
+    <td>
+        <span className="customers-status-active">
+            Active
+        </span>
+    </td>
+
+    <td>
+
+        <button
+            className="customers-edit-btn"
+            onClick={() => openEditModal(customer)}
+        >
+            Edit
+        </button>
+
+        <button
+            className="customers-delete-btn"
+            onClick={() => deleteCustomer(customer.id)}
+        >
+            Delete
+        </button>
+
+    </td>
+
+</tr>
+
+))
+
+)}
+
+</tbody>
 
       </table>
       </div>
 
       {showModal && (
 
-<div className="modal-overlay">
+<div className="customers-modal-overlay">
 
-  <div className="modal-box">
+  <div className="customers-modal-box">
 
     <h2>Add Customer</h2>
 
@@ -245,7 +329,7 @@ const deleteCustomer = async (id: number) => {
       }
     />
 
-    <div className="modal-actions">
+    <div className="customers-modal-actions">
 
     <select
         value={roleId}
@@ -260,14 +344,14 @@ const deleteCustomer = async (id: number) => {
     </select>
 
     <button
-        className="save-btn"
+        className="customers-save-btn"
         onClick={saveCustomer}
     >
         Save Customer
     </button>
 
     <button
-        className="cancel-btn"
+        className="customers-cancel-btn"
         onClick={() => setShowModal(false)}
     >
         Cancel
@@ -282,8 +366,8 @@ const deleteCustomer = async (id: number) => {
 )}
 
 {editingCustomer && (
-  <div className="modal-overlay">
-    <div className="modal-box">
+  <div className="customers-modal-overlay">
+    <div className="customers-modal-box">
 
       <h2>Edit Customer</h2>
 
@@ -300,17 +384,17 @@ const deleteCustomer = async (id: number) => {
           setEditEmail(e.target.value)
         }
       />
-      <div className="modal-actions">
+      <div className="customers-modal-actions">
 
       <button
-        className="save-btn"
+        className="customers-save-btn"
         onClick={updateCustomer}
       >
         Save Changes
       </button>
 
       <button
-        className="cancel-btn"
+        className="customers-cancel-btn"
         onClick={() =>
           setEditingCustomer(null)
         }

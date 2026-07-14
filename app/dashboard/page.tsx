@@ -1,10 +1,15 @@
 "use client";
 
-import "../styles/dashboard.css";
+import "./dashboard.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function DashboardPage() {
+
+    const [ticketsCount,setTicketsCount] =
+useState(0);
+
 
     const [stats, setStats] = useState({
   users: 0,
@@ -14,7 +19,7 @@ export default function DashboardPage() {
 });
 
 useEffect(() => {
-  fetch("/api/dashboard/stats")
+  fetch("/api/admin/dashboard/stats")
     .then((res) => res.json())
     .then((data) => {
       setStats({
@@ -24,73 +29,194 @@ useEffect(() => {
         plans: data.plans,
       });
     });
+
+fetch("/api/tickets")
+  .then((res) => res.json())
+  .then((data) => {
+
+    console.log("Tickets API:", data);
+
+    if (Array.isArray(data)) {
+      setTicketsCount(data.length);
+
+    } else if (Array.isArray(data.tickets)) {
+      setTicketsCount(data.tickets.length);
+
+    } else if (Array.isArray(data.data)) {
+      setTicketsCount(data.data.length);
+
+    } else {
+      setTicketsCount(0);
+    }
+
+  })
+  .catch((err) => {
+    console.error("Tickets API Error:", err);
+    setTicketsCount(0);
+  });
+
 }, []);
 
   return (
     <main className="dashboard-layout">
 
-      <aside className="sidebar">
+      <aside className="dashboard-sidebar">
 
-        <div className="sidebar-logo">
-          👑 Beast Tamer
-        </div>
+<div className="dashboard-sidebar-brand">
 
-        <nav>
+    <Image
+        src="/beaconlogo.png"
+        alt="Beacon Logo"
+        width={64}
+        height={64}
+        className="dashboard-sidebar-logo-image"
+    />
 
-            <Link href="/dashboard">📊 Dashboard</Link>
+    <div className="dashboard-sidebar-brand-content">
 
-         <Link href="/customers">👥 Customers</Link>
+        <span className="dashboard-sidebar-brand-title">
+            Beacon
+        </span>
 
-          <Link href="/licenses">🔑 Licenses</Link>
+        <span className="dashboard-sidebar-brand-subtitle">
+            LICENSE SERVER
+        </span>
 
-          <Link href="#">💳 Payments</Link>
+    </div>
 
-          <Link href="#">⭐ Reviews</Link>
+</div>
 
-          <Link href="#">📥 Downloads</Link>
+<span className="dashboard-sidebar-tag">
+    BEACON PLATFORM
+</span>
 
-          <Link href="#">🤝 Brokers</Link>
+<h2 className="dashboard-sidebar-title">
+    Command Center
+</h2>
 
-          <Link href="#">📈 Performance</Link>
+<p className="dashboard-sidebar-description">
+    Manage licenses, monitoring and trading infrastructure.
+</p>
 
-          <Link href="#">🎫 Support</Link>
+<span className="dashboard-sidebar-version">
+    v1.0.0
+</span>
 
-          <Link href="#">⚙️ Settings</Link>
+        <nav className="dashboard-sidebar-nav">
+
+          <div className="dashboard-sidebar-section">
+          MANAGEMENT
+          </div>
+
+          <Link href="/admin/dashboard"className="dashboard-sidebar-link dashboard-sidebar-link-active">
+            📊 Command Center
+          </Link>
+
+          <Link href="/admin/customers" className="dashboard-sidebar-link">
+            👥 Customers
+          </Link>
+
+          <Link href="/admin/licenses" className="dashboard-sidebar-link">
+            🔑 Licenses
+          </Link>
+
+          <Link href="/admin/payments" className="dashboard-sidebar-link">
+            💳 Payments
+          </Link>
+
+          <Link href="/admin/reviews" className="dashboard-sidebar-link">
+            ⭐ Reviews
+          </Link>
+
+          <Link href="/admin/downloads" className="dashboard-sidebar-link">
+            📦 Downloads
+          </Link>
+
+          <Link href="/admin/brokers" className="dashboard-sidebar-link">
+            🤝 Brokers
+          </Link>
+
+          <Link href="/admin/performance" className="dashboard-sidebar-link">
+            📈 Performance
+          </Link>
+
+          <Link href="/admin/tickets" className="dashboard-sidebar-link">
+            🎫 Support
+          </Link>
+
+          <Link href="/admin/settings" className="dashboard-sidebar-link">
+            ⚙️ Settings
+          </Link>
+
+          <hr className="dashboard-sidebar-divider" />
+
+          <div className="dashboard-sidebar-section">
+          MONITORING
+          </div>
+
+          <Link href="/admin/sessions" className="dashboard-sidebar-link">
+            🟢 Active Sessions
+          </Link>
+
+          <Link href="/admin/session-history" className="dashboard-sidebar-link">
+            📜 Session History
+          </Link>
+
+          <Link href="/admin/heartbeat-logs" className="dashboard-sidebar-link">
+            ❤️ Heartbeat Logs
+          </Link>
+
+          <Link href="/admin/online-monitor" className="dashboard-sidebar-link">
+            🖥️ Online Monitor
+          </Link>
+
+          <Link href="/admin/audit-logs" className="dashboard-sidebar-link">
+            📋 Audit Logs
+          </Link>
 
         </nav>
 
       </aside>
 
-      <section className="dashboard-content">
+      <section className="dashboard-main">
 
-        <h1>
-          CEO Dashboard
-        </h1>
+<span className="dashboard-page-tag">
+    BEACON LICENSE SERVER
+</span>
 
-<p>
-  Welcome P&apos;ONE Luciano
+<h1 className="dashboard-main-title">
+    Command Center
+</h1>
+
+<p className="dashboard-main-description">
+    Manage licenses, monitoring and trading infrastructure.
 </p>
 
-<div className="stats-grid">
+<div className="dashboard-cards">
 
-  <div className="stat-card">
-    <h3>Users</h3>
-    <span>{stats.users}</span>
+  <div className="dashboard-card">
+    <h3 className="dashboard-card-title">👥 Users</h3>
+    <span className="dashboard-card-value">{stats.users}</span>
   </div>
 
-  <div className="stat-card">
-    <h3>Licenses</h3>
-    <span>{stats.licenses}</span>
+  <div className="dashboard-card">
+    <h3 className="dashboard-card-title">🔑 Licenses</h3>
+    <span className="dashboard-card-value">{stats.licenses}</span>
   </div>
 
-  <div className="stat-card">
-    <h3>Payments</h3>
-    <span>{stats.payments}</span>
+  <div className="dashboard-card">
+    <h3 className="dashboard-card-title">💳 Payments</h3>
+    <span className="dashboard-card-value">{stats.payments}</span>
   </div>
 
-  <div className="stat-card">
-    <h3>Plans</h3>
-    <span>{stats.plans}</span>
+  <div className="dashboard-card">
+    <h3 className="dashboard-card-title">📋 Plans</h3>
+    <span className="dashboard-card-value">{stats.plans}</span>
+  </div>
+
+  <div className="dashboard-card">
+    <h3 className="dashboard-card-title">🎫 Tickets</h3>
+    <span className="dashboard-card-value">{ticketsCount}</span>
   </div>
 
 </div>

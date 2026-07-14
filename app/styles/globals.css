@@ -43,22 +43,79 @@ body{
     min-height:100%;
 
     overflow-x:hidden;
+    scrollbar-gutter:stable;
 
     background:#071426;
     color:#ffffff;
+
+    font-family:var(--font-geist-sans);
 }
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    overflow-x:hidden;
 }
 
 p{
     color:#ffffff;
+}
+
+/* ==========================================================
+   Smooth Transition
+========================================================== */
+
+button,
+input,
+select,
+a{
+
+    transition:.25s;
+
+}
+
+/* ==========================================================
+   Focus
+========================================================== */
+
+button:focus,
+input:focus,
+select:focus{
+
+    outline:none;
+
+}
+
+/* ==========================================================
+   Utilities
+========================================================== */
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.text-right{
+
+    text-align:right;
+
+}
+
+.mt-20{
+
+    margin-top:20px;
+
+}
+
+.mb-20{
+
+    margin-bottom:20px;
+
+}
+
+.hidden{
+
+    display:none;
+
 }

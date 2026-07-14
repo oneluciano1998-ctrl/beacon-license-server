@@ -11,6 +11,7 @@ type Plan = {
   price: number;
   max_accounts: number;
   status: string;
+  created_at: string;
 };
 
 export default function PlansPage() {
@@ -144,23 +145,75 @@ const deletePlan = async (
   const data =
     await res.json();
 
-  if (data.success) {
+    if (data.success) {
 
     alert("Deleted");
 
     location.reload();
 
-  } else {
+    } else {
 
-    alert("Delete Failed");
+    alert(
+        data.message ||
+        "Delete Failed"
+    );
 
-  }
+    }
+}
+
+const togglePlanStatus =
+async (
+  id: number,
+  status: string
+) => {
+
+const newStatus =
+  status === "active"
+    ? "inactive"
+    : "active";
+
+  const res = await fetch(
+    `/api/plans/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type":
+          "application/json",
+      },
+      body: JSON.stringify({
+        status: newStatus,
+      }),
+    }
+  );
+
+  const data =
+    await res.json();
+
+    if (data.success) {
+
+    alert("Updated");
+
+    location.reload();
+
+    } else {
+
+    console.log(data);
+
+    alert(
+        data.error ||
+        "Failed"
+    );
+
+    }
 };
 
-  const filteredPlans = plans.filter((plan) =>
+const filteredPlans =
+  plans.filter((plan) =>
     plan.name
       .toLowerCase()
-      .includes(search.toLowerCase())
+      .includes(
+        search.toLowerCase()
+      )
   );
 
   const activePlans = plans.filter(
@@ -174,6 +227,15 @@ const deletePlan = async (
   const paidPlans = plans.filter(
     (p) => Number(p.price) > 0
   ).length;
+
+  const inactivePlans = plans.filter(
+  (p) => p.status === "inactive"
+).length;
+
+const sortedPlans =
+  [...filteredPlans].sort(
+    (a, b) => a.id - b.id
+  );
 
   return (
     <div
@@ -261,6 +323,11 @@ const deletePlan = async (
           Paid Plans
           <span>{paidPlans}</span>
         </div>
+
+        <div className="stat-card">
+        Inactive Plans
+        <span>{inactivePlans}</span>
+        </div>
       </div>
 
       {/* SEARCH */}
@@ -322,12 +389,13 @@ const deletePlan = async (
             <th style={thStyle}>Price</th>
             <th style={thStyle}>Accounts</th>
             <th style={thStyle}>Status</th>
+            <th style={thStyle}>Created</th>
             <th style={thStyle}>Action</th>
           </tr>
         </thead>
 
         <tbody>
-          {filteredPlans.map((plan) => (
+          {sortedPlans.map((plan) => (
             <tr key={plan.id}>
               <td style={tdStyle}>{plan.id}</td>
 
@@ -339,9 +407,11 @@ const deletePlan = async (
                 {plan.description}
               </td>
 
-              <td style={tdStyle}>
-                {plan.duration_days}
-              </td>
+            <td style={tdStyle}>
+            {plan.duration_days >= 99999
+                ? "Lifetime"
+                : `${plan.duration_days} Days`}
+            </td>
 
               <td style={tdStyle}>
                 ${plan.price}
@@ -357,7 +427,7 @@ const deletePlan = async (
                     background:
                       plan.status === "active"
                         ? "#00aa55"
-                        : "#cc3333",
+                        : "#ff8800",
                     padding: "5px 12px",
                     borderRadius: "20px",
                     fontSize: "12px",
@@ -366,6 +436,12 @@ const deletePlan = async (
                   {plan.status}
                 </span>
               </td>
+
+              <td style={tdStyle}>
+                {new Date(
+                    plan.created_at
+                ).toLocaleDateString()}
+                </td>
 
               <td style={tdStyle}>
                 <button
@@ -387,18 +463,27 @@ const deletePlan = async (
 
                 <button
                 onClick={() =>
-                    deletePlan(plan.id)
+                    togglePlanStatus(
+                    plan.id,
+                    plan.status
+                    )
                 }
                 style={{
-                    background: "#ef4444",
+                    background:
+                    plan.status === "active"
+                        ? "#f59e0b"
+                        : "#00aa55",
                     color: "white",
                     border: "none",
                     padding: "8px 14px",
                     borderRadius: "8px",
                     cursor: "pointer",
+                    marginRight: "8px",
                 }}
                 >
-                Delete
+                {plan.status === "active"
+                ? "Deactivate"
+                : "Activate"}
                 </button>
               </td>
             </tr>

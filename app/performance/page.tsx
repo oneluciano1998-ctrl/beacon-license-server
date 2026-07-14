@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "../styles/performance.css";
+import "./performance.css";
 
 export default function PerformancePage() {
   return (

@@ -2,9 +2,12 @@ import { NextResponse } from "next/server";
 import pool from "@/lib/db";
 import { RowDataPacket } from "mysql2";
 
-type PlanRow = RowDataPacket & {
-  duration_days: number;
-};
+type PlanStatusRow =
+  RowDataPacket & {
+    status: string;
+    duration_days: number;
+  };
+
 
 export async function GET() {
   try {
@@ -60,42 +63,67 @@ export async function POST(request: Request) {
   account_number,
 });
 
-    const [planRows] = await pool.query<PlanRow[]>(
-      `
-      SELECT duration_days
-      FROM plans
-      WHERE id = ?
-      `,
-      [plan_id]
-    );
+const [statusRows] =
+  await pool.query<
+    PlanStatusRow[]
+  >(
+    `
+    SELECT status, duration_days
+    FROM plans
+    WHERE id = ?
+    `,
+    [plan_id]
+  );
 
-    if (planRows.length === 0) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Plan not found",
-        },
-        {
-          status: 400,
-        }
-      );
+if (
+  statusRows.length === 0
+) {
+  return NextResponse.json(
+    {
+      success: false,
+      message: "Plan not found",
+    },
+    {
+      status: 400,
     }
+  );
+}
 
-    const durationDays =
-      Number(planRows[0].duration_days);
+if (
+  statusRows[0].status !==
+  "active"
+) {
+  return NextResponse.json(
+    {
+      success: false,
+      message:
+        "Plan is inactive",
+    },
+    {
+      status: 400,
+    }
+  );
+}
 
-    const expireDate = new Date();
+const durationDays =
+  Number(
+    statusRows[0]
+      .duration_days
+  );
 
-    expireDate.setDate(
-      expireDate.getDate() +
-      durationDays
-    );
+const expireDate =
+  new Date();
 
-    const mysqlExpireDate =
-      expireDate
-        .toISOString()
-        .slice(0, 19)
-        .replace("T", " ");
+expireDate.setDate(
+  expireDate.getDate() +
+    durationDays
+);
+
+const mysqlExpireDate =
+  expireDate
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", " ");
 
     const license_key =
       "BT-" +
@@ -153,4 +181,24 @@ export async function POST(request: Request) {
       }
     );
   }
+}
+
+function generateLicense() {
+  const chars =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+  const part = () =>
+    Array.from({ length: 4 })
+      .map(
+        () =>
+          chars[
+            Math.floor(
+              Math.random() *
+                chars.length
+            )
+          ]
+      )
+      .join("");
+
+  return `EBT-${part()}-${part()}-${part()}`;
 }
